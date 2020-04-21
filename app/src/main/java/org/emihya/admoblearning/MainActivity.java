@@ -13,6 +13,8 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.startapp.android.publish.adsCommon.StartAppAd;
+import com.startapp.android.publish.adsCommon.StartAppSDK;
 
 import net.khirr.android.privacypolicy.PrivacyPolicyDialog;
 
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StartAppSDK.init(this, "203498467", true);
         setContentView(R.layout.activity_main);
 
         instantiateAdMob();
@@ -59,4 +62,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void handleStartApp(View view) {
+        Intent intent =  new Intent(this, AdActivity.class);
+        startActivity(intent);
+        StartAppAd.showAd(this);
+    }
 }
